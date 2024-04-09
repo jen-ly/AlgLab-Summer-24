@@ -2,9 +2,7 @@ from data_schema import Instance, Solution
 
 
 def solve(instance: Instance) -> Solution:
-    """
-    Implement your solver for the problem here!
-    """
+    instance.numbers.sort()
     numbers = instance.numbers
     return Solution(
         number_a=numbers[0],
