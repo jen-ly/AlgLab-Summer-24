@@ -46,7 +46,13 @@ _You can write your answer directly in this markdown file or refer to a separate
 file here._
 
 <!-- ADD YOUR ANSWER HERE -->
+$$\max \sum_{i \in K} \sum_{j \in I} v_j x_{ij}$$
 
+$$\text{s.t.} \forall i \in K: \sum_{j \in I} w_j x_{ij} \leq C_i$$
+
+$$\forall j \in I: \sum_{i \in K} x_{ij} \leq 1$$
+
+$$\forall j \in I: \forall i \in K: x_{ij} \in \{0,1\}$$
 ### Implementation of a Solver in CP-SAT
 
 Next, we want to solve the problem using CP-SAT. This problem is actually
