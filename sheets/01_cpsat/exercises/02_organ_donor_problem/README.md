@@ -71,6 +71,12 @@ _You can write your answer directly in this markdown file or refer to a separate
 file here._
 
 <!-- ADD YOUR ANSWER HERE -->
+$$\text{max} \sum_{i \in D, j \in R} t_{ij}$$
+$$\text{s.t.} \forall i,j \in \{1, \ldots ,n\}: t_{ij} \leq f(d_i,r_j)$$
+$$\forall i \in D: \sum_{j \in R} t_{ij} \leq 1$$
+$$\forall j \in R: \sum_{i \in D} t_{ij} \leq 1$$
+$$\forall i \in \{1, \ldots ,n\}: \sum_{j = 1 }^n t_{ij} = \sum_{j = 1 }^n t_{ji}$$
+$$\forall i,j \in \{1, \ldots ,n\}: t_{ij} \in \{0,1 \}$$
 
 ### Implementation of a Solver in CP-SAT
 
