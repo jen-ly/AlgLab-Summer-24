@@ -36,10 +36,11 @@ class BottleneckTSPSolver:
         Check the networkx documentation for more information!
         """
         self.graph = graph
-        # TODO: Implement me!
-
-    def lower_bound(self) -> float:
-        # TODO: Implement me!
+        # get list of sorted weights of the graph
+        self.weights = set(self.graph.edges[e]["weight"] for e in self.graph.edges)
+        self.weights = list(self.weights)
+        self.weights.sort()
+        self.best_solution = None
 
     def optimize_bottleneck(
         self,
@@ -51,4 +52,27 @@ class BottleneckTSPSolver:
         """
 
         self.timer = Timer(time_limit)
-        # TODO: Implement me!
+        left = 0
+        right = len(self.weights) - 1
+        while left < right:
+            m = math.floor((left + right) / 2)
+            t_weight = self.weights[m]
+            # remove all edges with weight > t_weight
+            new_graph = self.graph.copy()
+            edges = [
+                (u, v)
+                for (u, v) in self.graph.edges
+                if self.graph.edges[(u, v)]["weight"] > t_weight
+            ]
+            new_graph.remove_edges_from(edges)
+            model = HamiltonianCycleModel(graph=new_graph)
+            # if the graph after removing the edges is still Hamiltonian, then continue binary search in lower half of weights list
+            solution = model.solve()
+            if solution is not None:
+                self.best_solution = solution
+                right = m
+            else:
+                # after deleting edges the model is not solvable, so continue binary search in upper half of weights list
+                left = m + 1
+
+        return self.best_solution
