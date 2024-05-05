@@ -47,6 +47,11 @@ _You can write your answer directly in this markdown file or refer to a separate
 file here._
 
 <!-- ADD YOUR ANSWER HERE -->
+$$ \max_{v \in V} \min_{w \in C}d_{vw} \leq c$$
+$$\text{s.t.}\sum_{v \in V} x_{v} \leq k$$
+$$C \subseteq V$$
+$$|C| \leq k$$
+$$\forall v \in V: x_v \in \{0,1\}$$
 
 ### Task 2: Implementation of a Solver using a card-SAT-solver
 
