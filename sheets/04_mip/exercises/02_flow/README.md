@@ -55,6 +55,17 @@ More specific:
    Card-SAT? What restrictions or changes would have to be made to the modeling
    and the solving procedure?
 
+$$
+\begin{align*}
+\max \quad & \sum_{j \in n} f_{jl} \\
+\text{s.t} &\sum_{j \in n} f_{mj} \leq o_m + \sum_{i \in n} f_{im} & \forall m \in M \\
+& \sum_{e \in E} c_ex_e \leq b \\ 
+& \sum_{j \in n} f_{lj} = 0 \\
+& x_{ij} + x_{ji} \leq 1  & \forall e \in E\\
+& f_{ij}, f_{ji} \in \{0,\dots , u_e \}  & \forall e \in E \\
+ & x_{ij}, x_{ji} \in \{0,1 \}  & \forall e \in E\\
+\end{align*}
+$$
 ### Gurobi Implementation
 
 1. Implement a MIP-based solver for this problem using Gurobi in the file
